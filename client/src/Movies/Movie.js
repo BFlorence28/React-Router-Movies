@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import {useParams} from "react-router-dom";
 import axios from 'axios';
 
 const Movie = (props) => {
-  const [movie, setMovie] = useState();
- 
+  const [movie, setMovie] = useState({});
+  // console.log("props", props)
+  // let id = props.match.param.id;
+  const {id}= useParams();
+  console.log(useParams());
+
   useEffect(() => {
     const id = 1;
     // change ^^^ that line and grab the id from the URL
@@ -18,7 +23,8 @@ const Movie = (props) => {
           console.error(error);
         });
 
-  },[]);
+        
+  },[id]);  
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
@@ -43,11 +49,11 @@ const Movie = (props) => {
         </div>
         <h3>Actors</h3>
 
-        {stars.map(star => (
+        {/* {stars.map(star => (
           <div key={star} className="movie-star">
             {star}
           </div>
-        ))}
+        ))} */}
       </div>
       <div className="save-button">Save</div>
     </div>
